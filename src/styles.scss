@@ -1,1 +1,17 @@
 /* You can add global styles to this file, and also import other style files */
+
+@font-face {
+  font-family: 'VintageFaith';
+  src: url('./assets/Vintage\ Faith.ttf') format('truetype');
+  /* Opcional: especifica los estilos de la fuente */
+  font-weight: bold;
+  font-style: italic;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
