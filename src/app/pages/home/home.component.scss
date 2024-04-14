@@ -2,19 +2,7 @@ main {
   height: 100vh;
 }
 
-div {
-  height: 92%;
-  margin: 0;
-  padding-bottom: 20vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
 
-  background: url("/assets/wooden-table-background.png");
-  background-position: 0;
-  background-size: cover;
-}
 
 button {
   width: 60%;
@@ -67,9 +55,5 @@ button {
     flex-direction: row;
     align-items: center;
     justify-content: space-around;
-
-    background: url("/assets/wooden-table-background-desktop.png");
-    background-position: 0;
-    background-size: cover;
   }
 }

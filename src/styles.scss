@@ -1,8 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
 
 @font-face {
-  font-family: 'VintageFaith';
-  src: url('./assets/Vintage\ Faith.ttf') format('truetype');
+  font-family: "VintageFaith";
+  src: url("./assets/Vintage\ Faith.ttf") format("truetype");
   /* Opcional: especifica los estilos de la fuente */
   font-weight: bold;
   font-style: italic;
@@ -23,3 +23,24 @@ app-root {
   height: 100vh;
 }
 
+.global-background {
+  height: 92%;
+  margin: 0;
+  padding-bottom: 20vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  background: url("/assets/wooden-table-background.png");
+  background-position: 0;
+  background-size: cover;
+}
+
+@media (min-width: 768px) {
+  .global-background {
+    background: url("/assets/wooden-table-background-desktop.png");
+    background-position: 0;
+    background-size: cover;
+  }
+}
