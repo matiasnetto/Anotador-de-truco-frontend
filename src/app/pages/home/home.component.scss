@@ -1,20 +1,28 @@
+main {
+  height: 100vh;
+}
+
 div {
-  height: 50vh;
+  height: 92%;
+  margin: 0;
+  padding-bottom: 20vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+
+  background: url("/assets/wooden-table-background.png");
+  background-position: 0;
+  background-size: cover;
 }
 
 button {
   width: 60%;
   font-size: 1.2rem;
   padding: 1rem 0;
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
   cursor: pointer;
 }
-
-
 
 /* CSS */
 .button-74 {
@@ -26,7 +34,7 @@ button {
   cursor: pointer;
   display: inline-block;
   font-weight: 600;
-  font-family: 'VintageFaith', sans-serif;
+  font-family: "VintageFaith", sans-serif;
   font-size: 1.4rem;
   padding: 0 18px;
   line-height: 50px;
@@ -35,6 +43,7 @@ button {
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
+  transition: all 0.2s;
 }
 
 .button-74:hover {
@@ -50,5 +59,17 @@ button {
   .button-74 {
     min-width: 120px;
     padding: 0 25px;
+    display: inline;
+    margin: 0 3rem;
+  }
+
+  div {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+
+    background: url("/assets/wooden-table-background-desktop.png");
+    background-position: 0;
+    background-size: cover;
   }
 }
