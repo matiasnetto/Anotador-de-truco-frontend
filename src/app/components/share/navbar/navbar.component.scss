@@ -1,0 +1,152 @@
+$nav-height: 8vh;
+$bar-width: 36px;
+$bar-height: 4px;
+$hamburger-gap: 7px;
+$foreground: #555;
+$background: #222;
+$animation-timing: 300ms ease-in-out;
+$hamburger-height: calc(#{$bar-height} * 3 + #{$hamburger-gap} * 2);
+$x-width: calc($hamburger-height * 1.41421356237);
+
+nav {
+  height: $nav-height;
+  width: 100vw;
+  overflow-x: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  align-items: center;
+  background-color: $background;
+  color: #fff;
+  padding: 15px;
+  font-size: 18px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  font-size: 2rem;
+  margin-left: 0.5rem;
+  font-family: "VintageFaith", sans-serif;
+}
+
+.hamburger-menu {
+  display: flex;
+  flex-direction: column;
+  gap: $hamburger-gap;
+  width: max-content;
+  z-index: 2;
+  cursor: pointer;
+
+  //Lines style
+  &::before,
+  &::after,
+  input {
+    content: "";
+    width: $bar-width;
+    height: $bar-height;
+    background-color: #eee;
+    border-radius: 9999px;
+    transform-origin: left center;
+    transition: opacity $animation-timing, width $animation-timing,
+      rotate $animation-timing, translate $animation-timing,
+      background-color $animation-timing;
+  }
+
+  input {
+    appearance: none;
+    padding: 0;
+    margin: 0;
+    outline: none;
+    pointer-events: none;
+  }
+
+  //Animate lines
+  &:has(input:checked)::before {
+    rotate: 45deg;
+    width: $x-width;
+    translate: 0 calc(#{$bar-height} / -2);
+  }
+
+  &:has(input:checked)::after {
+    rotate: -45deg;
+    width: $x-width;
+    translate: 0 calc(#{$bar-height} / 2);
+  }
+
+  input:checked {
+    opacity: 0;
+    width: 0;
+  }
+
+  // Open sidebar
+  &:has(input:checked) + .sidebar {
+    translate: 0;
+  }
+}
+
+.sidebar {
+  width: 100vw;
+  height: calc(100vh - $nav-height);
+  position: fixed;
+  left: 0;
+  top: $nav-height;
+  translate: 100%;
+  padding: 0.5rem 1rem;
+  padding-top: calc($hamburger-height + 1rem);
+  background-color: $background;
+  color: $background;
+  transition: translate $animation-timing;
+}
+
+.list {
+  height: 75%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  & li {
+    color: #fff;
+    text-decoration: none;
+    list-style: none;
+    height: 4rem;
+  }
+}
+
+.list-item {
+  color: #fff;
+  font-size: 1.4rem;
+
+}
+
+@media (min-width: 768px) {
+
+  .hamburger-menu {
+    display: none;
+  }
+
+  .sidebar {
+    position: relative;
+    top: 0;
+    padding: 0;
+    translate: 0;
+    height: fit-content;
+    width: fit-content;
+    flex-direction: row;
+  }
+
+  .list {
+    // height: auto;
+    flex-direction: row;
+    margin-right: 1rem;
+
+    & li {
+      height: auto  ;
+      margin-left: 3rem;
+    }
+  }
+
+  .list-item {
+    font-size: 1.2rem;
+  }
+}
