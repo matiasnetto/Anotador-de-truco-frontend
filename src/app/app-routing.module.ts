@@ -3,10 +3,14 @@ import { RouterModule, Routes } from '@angular/router';
 import { MatchComponent } from './pages/match/match.component';
 import { HomeComponent } from './pages/home/home.component';
 import { ConnectComponent } from './pages/connect/connect.component';
+import { LoginComponent } from './pages/auth/login/login.component';
+import { SignUpComponent } from './pages/auth/sign-up/sign-up.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'connect', component: ConnectComponent },
+  { path: 'auth/login', component: LoginComponent },
+  { path: 'auth/sign-up', component: SignUpComponent },
   { path: 'test', component: MatchComponent },
 ];
 

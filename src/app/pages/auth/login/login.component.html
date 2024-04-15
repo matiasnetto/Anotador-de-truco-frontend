@@ -1,0 +1,18 @@
+<div class="global-background main-container">
+  <h2>Login:</h2>
+  <form action="" (submit)="onSubmit($event)">
+    <input
+      type="text"
+      name="username"
+      placeholder="Username"
+      [formControl]="form.controls.username"
+    />
+    <input
+      type="password"
+      name="password"
+      placeholder="Password"
+      [formControl]="form.controls.password"
+    />
+    <button class="button-74">Login</button>
+  </form>
+</div>

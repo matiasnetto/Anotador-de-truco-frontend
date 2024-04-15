@@ -1,5 +1,18 @@
-.code-input {
-  width: 60%;
+.main-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+form {
+  width: 60vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+input {
+  width: 70vw;
   font-size: 1.2rem;
   padding: 1rem 0;
   margin-bottom: 2rem;
@@ -27,28 +40,23 @@
   &::placeholder {
     color: #999;
   }
-
-  //Eliminar error en padding con los botones del navegador
-  &::-webkit-inner-spin-button,
-  &::-webkit-outer-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-  }
-  appearance: textfield;
 }
 
-.code-input:active {
+input[name="password"] {
+  font-family: sans-serif;
+}
+
+input[name="password"]::placeholder {
+  font-family: "VintageFaith", sans-serif;
+}
+
+input:active {
   box-shadow: #422800 2px 2px 0 0;
   transform: translate(2px, 2px);
 }
 
-h2 {
-  color: #fafafa;
-  font-size: 1.5rem;
-  margin-bottom: 1rem;
-}
-
 .button-74 {
+  width: fit-content;
   font-size: 1.2rem;
   margin-bottom: 2rem;
   background-color: #fbeee0;
@@ -59,8 +67,8 @@ h2 {
   cursor: pointer;
   display: inline-block;
   font-family: "VintageFaith", sans-serif;
-  font-size: 1.1rem;
-  padding: 0 18px;
+  font-size: 1.2rem;
+  padding: 0 3rem;
   line-height: 40px;
   text-align: center;
   text-decoration: none;
@@ -79,18 +87,8 @@ h2 {
   transform: translate(2px, 2px);
 }
 
-@media (min-width: 768px) {
-  h2 {
-    margin-bottom: 1.5rem;
-    font-size: 1.8rem;
-  }
-  .code-input {
-    max-width: 400px;
-  }
-
-  .button-74 {
-    font-size: 1.3rem;
-    line-height: 50px;
-    padding: 0 2rem;
-  }
+h2 {
+  color: #fafafa;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
 }

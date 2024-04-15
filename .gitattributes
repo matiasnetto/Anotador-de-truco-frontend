@@ -1,0 +1,6 @@
+# Archivos de texto deben tener EOL de estilo Unix (LF) independientemente del sistema operativo
+* text=auto
+
+# Excepciones: archivos que deben mantener su formato original
+*.jpg binary
+*.png binary
