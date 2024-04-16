@@ -23,4 +23,8 @@ export class LoginComponent {
     e.preventDefault();
     console.log(this.form.value);
   }
+
+  print(e:InputEvent) {
+    
+  }
 }
