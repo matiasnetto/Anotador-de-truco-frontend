@@ -9,8 +9,7 @@ import { SignUpComponent } from './pages/auth/sign-up/sign-up.component';
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'connect', component: ConnectComponent },
-  { path: 'auth/login', component: LoginComponent },
-  { path: 'auth/sign-up', component: SignUpComponent },
+  { path: 'auth',  loadChildren: ()=> import('./pages/auth/auth.module').then(m=> m.AuthModule)},
   { path: 'test', component: MatchComponent },
 ];
 
