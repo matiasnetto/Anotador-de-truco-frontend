@@ -1,1 +1,24 @@
-<div class="global-background">Register</div>
+<div class="global-background main-container">
+  <h2>Register:</h2>
+  <form action="">
+    <input
+      type="text"
+      name="username"
+      placeholder="Username"
+      [formControl]="form.controls.username"
+    />
+     <input
+      type="text"
+      name="fullName"
+      placeholder="Full name"
+      [formControl]="form.controls.fullName"
+    />
+    <input
+      type="password"
+      name="password"
+      placeholder="Password"
+      [formControl]="form.controls.password"
+    />
+    <button>Sign Up</button>
+  </form>
+</div>
