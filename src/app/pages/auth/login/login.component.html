@@ -1,12 +1,34 @@
 <div class="global-background main-container">
   <h2>Login:</h2>
   <form action="" (submit)="onSubmit($event)">
+    <span *ngIf="submitted && errorMessage" class="invalid-warning"
+      ><span>*</span>{{ errorMessage }}</span
+    >
+    <span
+      *ngIf="
+        submitted &&
+        form.controls.username.errors &&
+        form.controls.username.errors['required']
+      "
+      class="invalid-warning"
+      ><span>*</span>The password is requerido</span
+    >
     <input
       type="text"
       name="username"
       placeholder="Username"
       [formControl]="form.controls.username"
     />
+
+    <span
+      *ngIf="
+        submitted &&
+        form.controls.password.errors &&
+        form.controls.password.errors['required']
+      "
+      class="invalid-warning"
+      ><span>*</span>The password is required</span
+    >
     <input
       type="password"
       name="password"
@@ -15,5 +37,4 @@
     />
     <button>Login</button>
   </form>
-
 </div>

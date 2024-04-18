@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormControl, FormGroup, FormsModule } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { debounceTime } from 'rxjs';
 
 @Component({
@@ -8,9 +8,12 @@ import { debounceTime } from 'rxjs';
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent {
+  errorMessage: string | null = null;
+  submitted = false;
+
   form = new FormGroup({
-    username: new FormControl<string>(''),
-    password: new FormControl<string>(''),
+    username: new FormControl<string>('', [Validators.required]),
+    password: new FormControl<string>('', [Validators.required]),
   });
 
   constructor() {
@@ -21,10 +24,12 @@ export class LoginComponent {
 
   onSubmit(e: SubmitEvent) {
     e.preventDefault();
-    console.log(this.form.value);
+    this.submitted = true;
+    if (this.form.valid) {
+      //TODO Add the request to LOGIN
+      this.errorMessage = 'Invalid username or password';
+    }
   }
 
-  print(e:InputEvent) {
-    
-  }
+  print(e: InputEvent) {}
 }
