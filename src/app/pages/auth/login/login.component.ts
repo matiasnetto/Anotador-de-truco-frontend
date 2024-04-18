@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { debounceTime } from 'rxjs';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -16,7 +18,10 @@ export class LoginComponent {
     password: new FormControl<string>('', [Validators.required]),
   });
 
-  constructor() {
+  constructor(
+    private readonly authService: AuthService,
+    private readonly router: Router
+  ) {
     this.form.valueChanges
       .pipe(debounceTime(200))
       .subscribe((data) => console.log(data));
@@ -24,12 +29,20 @@ export class LoginComponent {
 
   onSubmit(e: SubmitEvent) {
     e.preventDefault();
-    this.submitted = true;
     if (this.form.valid) {
-      //TODO Add the request to LOGIN
-      this.errorMessage = 'Invalid username or password';
+      this.submitted = true;
+      this.authService
+        .loginUser(this.form.value.username!, this.form.value.password!)
+        .subscribe(
+          (res) => {
+            console.log('Successs', res);
+            window.localStorage.setItem('authorization', res.token);
+            this.router.navigate(['/']);
+          },
+          (error) => {
+            this.errorMessage = 'Invalid username or password';
+          }
+        );
     }
   }
-
-  print(e: InputEvent) {}
 }
