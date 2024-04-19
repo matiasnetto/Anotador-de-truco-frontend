@@ -1,0 +1,59 @@
+<div class="global-background main-container">
+  <h2>Register:</h2>
+  <form action="" (submit)="onSubmit($event)">
+    <div
+      *ngIf="form.controls.username.touched && form.controls.username.errors"
+      class="invalid-warning"
+    >
+      <span *ngIf="form.controls.username.errors['required']"
+        ><span>*</span> The username is required
+      </span>
+      <span *ngIf="form.controls.username.errors['minlength']"
+        ><span>*</span> Username must be at least 4 characters long
+      </span>
+      <span *ngIf="form.controls.username.errors['pattern']"
+        ><span>*</span> Username cannot contain spaces
+      </span>
+    </div>
+    <input
+      type="text"
+      name="username"
+      placeholder="Username"
+      [formControl]="form.controls.username"
+    />
+
+    <div
+      *ngIf="form.controls.fullName.touched && form.controls.fullName.errors"
+      class="invalid-warning"
+    >
+      <span *ngIf="form.controls.fullName.errors['required']"
+        ><span>*</span> The Full Name is required
+      </span>
+    </div>
+    <input
+      type="text"
+      name="fullName"
+      placeholder="Full name"
+      [formControl]="form.controls.fullName"
+    />
+
+    <div
+      *ngIf="form.controls.password.touched && form.controls.password.errors"
+      class="invalid-warning"
+    >
+      <span *ngIf="form.controls.password.errors['required']"
+        ><span>*</span> The Password is required
+      </span>
+      <span *ngIf="form.controls.password.errors['minlength']"
+        ><span>*</span>Password must be at least 8 characters long
+      </span>
+    </div>
+    <input
+      type="password"
+      name="password"
+      placeholder="Password"
+      [formControl]="form.controls.password"
+    />
+    <button [disabled]="submitted">Sign Up</button>
+  </form>
+</div>
