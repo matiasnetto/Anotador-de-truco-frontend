@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-sign-up',
@@ -8,6 +10,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class SignUpComponent {
   submitted = false;
+  errorMessage: string | null = null;
 
   public form = new FormGroup({
     username: new FormControl<string>('', [
@@ -25,6 +28,11 @@ export class SignUpComponent {
     ]),
   });
 
+  constructor(
+    private readonly authService: AuthService,
+    private readonly router: Router
+  ) {}
+
   onSubmit(e: Event) {
     e.preventDefault();
     this.form.controls.username.markAsTouched();
@@ -32,9 +40,18 @@ export class SignUpComponent {
     this.form.controls.password.markAsTouched();
 
     if (this.form.valid) {
-      console.log(this.form.value);
+      const { username, fullName, password } = this.form.value;
       this.submitted = true;
-      //TODO Send data to backend
+      this.authService.createNewUser(username!, fullName!, password!).subscribe(
+        (res) => {
+          window.localStorage.setItem('authorization', res.token);
+          this.router.navigate(['/']);
+        },
+        (err) => {
+          console.log(err);
+          this.errorMessage = 'Username already exists';
+        }
+      );
     }
 
     console.log('Username', this.form.controls.username.errors);

@@ -9,7 +9,7 @@ export class AuthService {
   constructor(private readonly http: HttpClient) {}
 
   createNewUser(username: string, fullName: string, password: string) {
-    return this.http.post(BASE_URL + '/auth/register', {
+    return this.http.post<{ token: string }>(BASE_URL + '/auth/register', {
       username,
       fullName,
       password,
